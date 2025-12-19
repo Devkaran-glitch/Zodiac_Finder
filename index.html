@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zodiac Sign Finder</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Zodiac Sign Finder</h1>
+      <button id="theme-toggle" aria-label="Toggle dark/light mode">
+        <span id="toggle-icon" class="sun">
+          <!-- Sun SVG -->
+          <svg width="32" height="32" viewBox="0 0 32 32">
+            <circle cx="16" cy="16" r="10" fill="#FFDD57" />
+            <g stroke="#FFDD57">
+              <line x1="16" y1="2" x2="16" y2="7" />
+              <line x1="16" y1="25" x2="16" y2="30" />
+              <line x1="2" y1="16" x2="7" y2="16" />
+              <line x1="25" y1="16" x2="30" y2="16" />
+              <line x1="5" y1="5" x2="9" y2="9" />
+              <line x1="23" y1="23" x2="27" y2="27" />
+              <line x1="5" y1="27" x2="9" y2="23" />
+              <line x1="23" y1="9" x2="27" y2="5" />
+            </g>
+          </svg>
+        </span>
+        <span id="toggle-icon" class="moon" style="display: none">
+          <!-- Moon SVG -->
+          <svg width="32" height="32" viewBox="0 0 32 32">
+            <circle cx="18" cy="16" r="10" fill="#FFF" />
+            <path
+              d="M18 6a10 10 0 0 1 10 10c0 4.97-3.65 9.1-8.4 9.86A10 10 0 0 1 18 6z"
+              fill="#FFD700"
+            />
+          </svg>
+        </span>
+      </button>
+    </header>
+
+    <main>
+      <section id="input-section" class="animated-gradient">
+        <form id="zodiac-form" autocomplete="off">
+          <div>
+            <label for="birth-date">Select your birth date:</label>
+            <input type="date" id="birth-date" autocomplete="bday" />
+          </div>
+          <div class="or-text">or enter day and month:</div>
+          <div class="fallback-row">
+            <input
+              type="number"
+              id="birth-day"
+              min="1"
+              max="31"
+              placeholder="Day"
+            />
+            <input
+              type="number"
+              id="birth-month"
+              min="1"
+              max="12"
+              placeholder="Month"
+            />
+          </div>
+          <span id="error-msg" aria-live="assertive"></span>
+          <button type="submit" id="find-sign">Find My Sign</button>
+        </form>
+      </section>
+      <section id="result-card" class="sign-result hidden"></section>
+      <button id="clear-btn" class="hidden">Try Another Date</button>
+    </main>
+
+    <footer>
+      <span>© 2025 Zodiac Finder. For demo/interview use.</span>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
