@@ -1,0 +1,263 @@
+/* Fonts and base */
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: linear-gradient(120deg, #74ebd5, #ACB6E5 100%);
+  min-height: 100vh;
+  margin: 0;
+  color: #232526;
+  transition: background 0.6s cubic-bezier(.5,1.5,.5,1), color 0.6s;
+}
+
+/* Glass morphism, gradients, and animated stars (optional) */
+.animated-gradient {
+  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.43);
+  border-radius: 20px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.14);
+  padding: 2.5em 2.5em 2.5em 2.5em;
+  margin: 1.5em auto;
+  max-width: 430px;
+  position: relative;
+  transition: background 0.6s;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.7em 2.2em 0 2.2em;
+}
+header h1 {
+  font-family: 'Orbitron', 'Montserrat', sans-serif;
+  letter-spacing: 1.3px;
+  font-size: 2.4em;
+  font-weight: 600;
+  animation: textFadeIn 1.4s;
+  margin: 0;
+}
+@keyframes textFadeIn {
+  0% {opacity: 0; transform: translateY(-20px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+
+/* Theme toggle button */
+#theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.3s;
+  margin-left: 1.2em;
+}
+#theme-toggle:active {transform: scale(1.08);}
+#toggle-icon svg {transition: transform 0.3s;}
+#toggle-icon.sun svg {filter: drop-shadow(0 0 3px #ffeb99);}
+#toggle-icon.moon svg {filter: drop-shadow(0 0 3px #fff9e6);}
+#theme-toggle .moon, #theme-toggle .sun {vertical-align: middle;}
+
+/* Inputs */
+#zodiac-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1em;
+  align-items: center;
+}
+input[type="date"], input[type="number"] {
+  font-size: 1.2em;
+  padding: 0.65em 1.1em;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(120,175,245,0.1);
+  margin: 0.3em;
+  transition: box-shadow 0.4s, background 0.35s, transform 0.3s;
+  background: rgba(255,255,255,0.93);
+}
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #B7E9F7, 0 2px 8px #fff;
+  background: #e9f9fd;
+  transform: scale(1.03);
+}
+.fallback-row {display: flex; flex-direction: row;}
+.or-text {font-size: 1.1em; margin: 0.2em 0 0.6em 0; opacity: 0.64;}
+
+/* Error message */
+#error-msg {
+  color: #e74c3c;
+  transition: opacity 0.5s, max-height 0.3s;
+  font-size: 1em;
+  font-weight: bold;
+  min-height: 22px;
+  max-height: 40px;
+}
+
+/* Find Sign button */
+button {
+  background: #4768f3;
+  color: #fff;
+  font-family: 'Montserrat';
+  font-size: 1.25em;
+  border: none;
+  border-radius: 32px;
+  box-shadow: 0 2px 8px rgba(70,104,243,0.15);
+  padding: 0.5em 1.6em;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.25s, box-shadow 0.3s;
+  margin-top: 0.7em;
+}
+button:hover, button:focus {
+  background: #2d3e7b;
+  transform: scale(1.09);
+  box-shadow: 0 4px 18px rgba(45,62,123,0.12);
+}
+
+/* Result card */
+#result-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.16);
+  border-radius: 22px;
+  background: rgba(240,247,255,0.92);
+  backdrop-filter: blur(10px);
+  margin: 2em auto;
+  max-width: 410px;
+  opacity: 0;
+  transform: scale(0.98) translateY(48px);
+  pointer-events: none;
+  transition: opacity 0.7s cubic-bezier(.5,1.5,.5,1), transform 0.7s cubic-bezier(.5,1.5,.5,1);
+}
+#result-card.visible {
+  opacity: 1;
+  transform: scale(1.03) translateY(0);
+  pointer-events: auto;
+}
+
+/* Zodiac icon animations */
+.sign-icon {
+  font-size: 3.6em;
+  margin: 1em 0 0.4em 0;
+  transition: transform 0.3s;
+  filter: drop-shadow(0 0 9px #ACEBEC50);
+}
+.sign-icon:hover {transform: scale(1.13) rotate(-8deg); filter: drop-shadow(0 0 14px #88ddf640);}
+
+.sign-label {
+  font-family: 'Orbitron', 'Montserrat', sans-serif;
+  font-size: 2em;
+  font-weight: bold;
+  letter-spacing: 0.6px;
+  margin-bottom: 0.2em;
+}
+.sign-dates {font-size: 1.07em; opacity: 0.78; margin-bottom: 0.7em;}
+
+.traits-list {
+  margin: 0.8em 0;
+  padding: 0;
+  list-style-type: disc;
+  font-size: 1.1em;
+  color: #232526;
+  opacity: 0.92;
+}
+.traits-list li {
+  margin-bottom: 0.2em;
+  padding-left: 1em;
+}
+
+/* Element, Ruling planet */
+.meta-info {
+  font-size: 1.09em;
+  margin-bottom: 0.4em;
+  color: #505072;
+}
+
+/* Compatibility */
+.compatibility {
+  margin: 0.8em 0;
+  font-size: 1.1em;
+  color: #324b4b;
+  display: flex;
+  gap: 1.2em;
+  justify-content: center;
+}
+.compat-sign-badge {
+  background: rgba(255,255,255,0.88);
+  box-shadow: 0 3px 11px rgba(140,210,230,0.14);
+  border-radius: 14px;
+  padding: 0.4em 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.4s, box-shadow 0.3s, transform 0.24s;
+}
+.compat-sign-badge:hover {
+  background: #E0F6FF;
+  box-shadow: 0 8px 24px rgba(70,144,255,0.15);
+  transform: translateY(-3px) scale(1.09);
+}
+
+.daily-vibe {
+  margin-top: 1em;
+  font-style: italic;
+  font-size: 1.09em;
+  color: #4787F3;
+  text-align: center;
+  opacity: 0.89;
+}
+
+/* Clear button */
+#clear-btn {
+  margin: 1.1em auto;
+  display: block;
+}
+
+/* Footer */
+footer {
+  padding: 2em 0 1.7em 0;
+  text-align: center;
+  font-size: 1em;
+  opacity: 0.53;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  body, .animated-gradient, #result-card {padding: 0;}
+  #result-card, .animated-gradient {max-width: 96vw;}
+  header {padding: 1.2em;}
+}
+
+@media (max-width: 430px) {
+  .animated-gradient {padding: 0.7em;}
+  #result-card {padding: 1em;}
+}
+
+/* Dark mode */
+body.dark-mode {
+  background: linear-gradient(120deg, #232526 0%, #414345 100%);
+  color: #e0e6ed;
+}
+body.dark-mode .animated-gradient {
+  background: rgba(37,44,54,0.83);
+}
+body.dark-mode #result-card {
+  background: rgba(38,35,54,0.92);
+  color: #e0e6ed;
+}
+body.dark-mode button {
+  background: #FFD83D;
+  color: #232526;
+}
+body.dark-mode button:hover {background: #505072;}
+body.dark-mode #theme-toggle .sun {display:none;}
+body.dark-mode #theme-toggle .moon {display:inline;}
+body:not(.dark-mode) #theme-toggle .sun {display:inline;}
+body:not(.dark-mode) #theme-toggle .moon {display:none;}
+
+body.dark-mode .compat-sign-badge {background: rgba(44,54,77,0.9); color: #FFD83D;}
+body.dark-mode .compat-sign-badge:hover {background: #252c36; color: #fff;}
+body.dark-mode .daily-vibe {color: #FFD83D;}
+
+.theme-transition, .dark-mode.theme-transition {
+  transition: background 0.6s cubic-bezier(.6,.05,.7,1.0) !important;
+}
+    
